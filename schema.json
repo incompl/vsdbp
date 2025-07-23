@@ -1,0 +1,1736 @@
+{
+  "$schema": "https://schema.takeshape.io/project-schema",
+  "defaultLocale": "en-us",
+  "locales": [
+    "en-us"
+  ],
+  "queries": {
+    "getPages": {
+      "shape": "Pages",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Get a Pages by ID",
+      "args": "TSGetArgs<Pages>"
+    },
+    "getPagesList": {
+      "shape": "PaginatedList<Pages>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Returns a list Pages in natural order.",
+      "args": "TSListArgs<Pages>"
+    },
+    "getHomePage": {
+      "shape": "HomePage",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "HomePage"
+      },
+      "description": "Get a HomePage by ID",
+      "args": "TSGetArgs<HomePage>"
+    }
+  },
+  "mutations": {
+    "updatePages": {
+      "shape": "UpdateResult<Pages>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Update Pages",
+      "args": "UpdateArgs<Pages>"
+    },
+    "createPages": {
+      "shape": "CreateResult<Pages>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Create Pages",
+      "args": "CreateArgs<Pages>"
+    },
+    "duplicatePages": {
+      "shape": "DuplicateResult<Pages>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Duplicate Pages",
+      "args": "DuplicateArgs<Pages>"
+    },
+    "deletePages": {
+      "shape": "DeleteResult<Pages>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Pages"
+      },
+      "description": "Delete Pages",
+      "args": "DeleteArgs<Pages>"
+    },
+    "updateHomePage": {
+      "shape": "UpdateResult<HomePage>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "HomePage"
+      },
+      "description": "Update HomePage",
+      "args": "UpdateArgs<HomePage>"
+    }
+  },
+  "shapes": {
+    "Pages": {
+      "id": "w42YUuUqv",
+      "name": "Pages",
+      "title": "Pages",
+      "model": {
+        "type": "multiple"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "@mapping": "shapedb:Pages.u8gH-axTr",
+            "type": "string",
+            "title": "Title"
+          },
+          "Handle": {
+            "@mapping": "shapedb:Pages.raCrcie8Q",
+            "type": "string",
+            "@derivedFrom": "Title",
+            "title": "Handle"
+          },
+          "SEOSettings": {
+            "title": "SEO Settings",
+            "@mapping": "shapedb:Pages.YpAidvUDI",
+            "@ref": "local:MetaSettings"
+          },
+          "Slices": {
+            "@mapping": "shapedb:Pages.eSrn3kxWo",
+            "type": "array",
+            "title": "Slices",
+            "items": {
+              "@ref": "local:Slices"
+            }
+          }
+        },
+        "required": [
+          "Title",
+          "Handle"
+        ]
+      }
+    },
+    "SliceContent": {
+      "id": "GMAxHMRK2",
+      "name": "SliceContent",
+      "title": "Slice Content",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Content": {
+            "@mapping": "shapedb:SliceContent.zR_79ZuJo",
+            "type": "string",
+            "title": "Content",
+            "@tag": "mdx"
+          }
+        }
+      }
+    },
+    "Slices": {
+      "id": "M3GkTNKQN",
+      "name": "Slices",
+      "title": "Slices",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "FriendlyName": {
+            "@mapping": "shapedb:Slices.rxliv4XdN",
+            "type": "string",
+            "title": "Friendly Name"
+          },
+          "Settings": {
+            "@mapping": "shapedb:Slices.YyAexXMA_",
+            "title": "Settings",
+            "@ref": "local:SliceSettings"
+          },
+          "Slice": {
+            "@mapping": "shapedb:Slices.G42f6UH7k",
+            "type": "array",
+            "title": "Slice",
+            "items": {
+              "oneOf": [
+                {
+                  "@ref": "local:SliceBannerBackground"
+                },
+                {
+                  "@ref": "local:SliceBannerVideo"
+                },
+                {
+                  "@ref": "local:SliceBulkPurchase"
+                },
+                {
+                  "@ref": "local:SliceCards"
+                },
+                {
+                  "@ref": "local:SliceContent"
+                },
+                {
+                  "@ref": "local:SliceFAQ"
+                },
+                {
+                  "@ref": "local:SliceFeatures"
+                },
+                {
+                  "@ref": "local:SliceHeroChips"
+                },
+                {
+                  "@ref": "local:SliceMarkdown"
+                },
+                {
+                  "@ref": "local:SliceSBS"
+                },
+                {
+                  "@ref": "local:SliceSBSIcons"
+                },
+                {
+                  "@ref": "local:SliceTestimonials"
+                },
+                {
+                  "@ref": "local:SliceVerticalScroller"
+                },
+                {
+                  "@ref": "local:SliceVideoGallery"
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "FriendlyName"
+        ]
+      }
+    },
+    "SliceMarkdown": {
+      "id": "g-mV8jaZS",
+      "name": "SliceMarkdown",
+      "title": "Slice Markdown",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Code": {
+            "@mapping": "shapedb:SliceMarkdown.KmWjdDmmZ",
+            "type": "string",
+            "title": "Code"
+          }
+        }
+      }
+    },
+    "SliceBulkPurchase": {
+      "id": "ucqHzVIa8",
+      "name": "SliceBulkPurchase",
+      "title": "Slice Bulk Purchase",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Enable": {
+            "@mapping": "shapedb:SliceBulkPurchase.VafsDlp9w",
+            "type": "boolean",
+            "title": "Enable"
+          }
+        }
+      }
+    },
+    "HomePage": {
+      "id": "gcHRytSEj",
+      "name": "HomePage",
+      "title": "Home Page",
+      "model": {
+        "type": "single"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "SEO": {
+            "title": "SEO",
+            "@mapping": "shapedb:HomePage.umALtDwbW",
+            "@ref": "local:MetaSettings"
+          },
+          "Slices": {
+            "@mapping": "shapedb:HomePage.9g8nhEUaY",
+            "type": "array",
+            "title": "Slices",
+            "items": {
+              "@ref": "local:Slices"
+            }
+          }
+        }
+      }
+    },
+    "SliceSettings": {
+      "id": "hbMn6UZe9",
+      "name": "SliceSettings",
+      "title": "Slice Settings",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "VerticalPadding": {
+            "@mapping": "shapedb:SliceSettings.UoLRuZJp7",
+            "type": "string",
+            "title": "Vertical Padding",
+            "oneOf": [
+              {
+                "title": "None",
+                "enum": [
+                  "py-0"
+                ]
+              },
+              {
+                "title": "Small",
+                "enum": [
+                  "py-3 md:py-6"
+                ]
+              },
+              {
+                "title": "Medium",
+                "enum": [
+                  "py-6 md:py-12"
+                ]
+              },
+              {
+                "title": "Large",
+                "enum": [
+                  "py-12 md:py-24"
+                ]
+              },
+              {
+                "title": "Extra Large",
+                "enum": [
+                  "py-24 md:py-48"
+                ]
+              }
+            ]
+          },
+          "VerticalMargin": {
+            "@mapping": "shapedb:SliceSettings.tHbrbKVt_",
+            "type": "string",
+            "title": "Vertical Margin",
+            "oneOf": [
+              {
+                "title": "None",
+                "enum": [
+                  "mx-0"
+                ]
+              },
+              {
+                "title": "Small",
+                "enum": [
+                  "my-3 my:mx-6"
+                ]
+              },
+              {
+                "title": "Medium",
+                "enum": [
+                  "my-6 my:mx-12"
+                ]
+              },
+              {
+                "title": "Large",
+                "enum": [
+                  "my-12 my:mx-24"
+                ]
+              },
+              {
+                "title": "Extra Large",
+                "enum": [
+                  "my-24 my:mx-48"
+                ]
+              }
+            ]
+          },
+          "BgColor": {
+            "@mapping": "shapedb:SliceSettings.nI5JnmPOF",
+            "type": "string",
+            "title": "Bg Color",
+            "oneOf": [
+              {
+                "title": "None",
+                "enum": [
+                  "bg-transparent"
+                ]
+              },
+              {
+                "title": "Blue",
+                "enum": [
+                  "bg-blue"
+                ]
+              },
+              {
+                "title": "Navy",
+                "enum": [
+                  "bg-navy"
+                ]
+              },
+              {
+                "title": "Midnight",
+                "enum": [
+                  "bg-midnight"
+                ]
+              },
+              {
+                "title": "Red",
+                "enum": [
+                  "bg-red"
+                ]
+              },
+              {
+                "title": "Light Gray",
+                "enum": [
+                  "#cacaca"
+                ]
+              },
+              {
+                "title": "Medium Gray",
+                "enum": [
+                  "bg-med-gray"
+                ]
+              },
+              {
+                "title": "Dark Gray",
+                "enum": [
+                  "bg-dark-gray"
+                ]
+              }
+            ]
+          },
+          "TextColor": {
+            "@mapping": "shapedb:SliceSettings.JolQizS7l",
+            "type": "string",
+            "title": "Text Color",
+            "oneOf": [
+              {
+                "title": "White",
+                "enum": [
+                  "text-white"
+                ]
+              },
+              {
+                "title": "Blue",
+                "enum": [
+                  "text-blue"
+                ]
+              },
+              {
+                "title": "Navy",
+                "enum": [
+                  "text-navy"
+                ]
+              },
+              {
+                "title": "Midnight",
+                "enum": [
+                  "text-midnight"
+                ]
+              },
+              {
+                "title": "Red",
+                "enum": [
+                  "text-red"
+                ]
+              },
+              {
+                "title": "Light Gray",
+                "enum": [
+                  "text-gray"
+                ]
+              },
+              {
+                "title": "Medium Gray",
+                "enum": [
+                  "text-med-gray"
+                ]
+              },
+              {
+                "title": "Dark Gray",
+                "enum": [
+                  "text-dark-gray"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "MetaSettings": {
+      "id": "kUABUBkxm",
+      "name": "MetaSettings",
+      "title": "Meta Settings",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "@mapping": "shapedb:MetaSettings.nh88bvnNz",
+            "type": "string",
+            "title": "Title"
+          },
+          "Description": {
+            "@mapping": "shapedb:MetaSettings.LAnZkV9qz",
+            "type": "string",
+            "title": "Description"
+          }
+        }
+      }
+    },
+    "SliceHeroChips": {
+      "id": "b6yTQ7u8t",
+      "name": "SliceHeroChips",
+      "title": "Slice Hero Chips",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "FeatureChipPreHeadline": {
+            "@mapping": "shapedb:SliceHeroChips.rpHZqdQF_",
+            "type": "string",
+            "title": "Feature Chip Pre Headline"
+          },
+          "FeatureChipHeadline": {
+            "@mapping": "shapedb:SliceHeroChips.3gKKuVI6N",
+            "type": "string",
+            "title": "Feature Chip Headline"
+          },
+          "FeatureChipStatement": {
+            "@mapping": "shapedb:SliceHeroChips.xny0HXItf",
+            "type": "string",
+            "title": "Feature Chip Statement"
+          },
+          "FeatureChipLink": {
+            "@mapping": "shapedb:SliceHeroChips.vf-2b2H48",
+            "title": "Feature Chip Link",
+            "@ref": "local:ComponentLink"
+          },
+          "FeatureChipImage": {
+            "@mapping": "shapedb:SliceHeroChips.h70ki7no4",
+            "title": "Feature Chip Image",
+            "@ref": "local:ComponentImage"
+          },
+          "SecondChipHeadline": {
+            "@mapping": "shapedb:SliceHeroChips.1W3i_x1xd",
+            "type": "string",
+            "title": "Second Chip Headline"
+          },
+          "SecondChipStatement": {
+            "@mapping": "shapedb:SliceHeroChips.PCSxfkmhB",
+            "type": "string",
+            "title": "Second Chip Statement"
+          },
+          "SecondChipLink": {
+            "@mapping": "shapedb:SliceHeroChips.quLEzXoNw",
+            "title": "Second Chip Link",
+            "@ref": "local:ComponentLink"
+          },
+          "SecondChipImage": {
+            "@mapping": "shapedb:SliceHeroChips.Kab8dbzB1",
+            "title": "Second Chip Image",
+            "@ref": "local:ComponentImage"
+          },
+          "ThirdChipHeadline": {
+            "@mapping": "shapedb:SliceHeroChips.hqLpGTlZz",
+            "type": "string",
+            "title": "Third Chip Headline"
+          },
+          "ThirdChipStatement": {
+            "@mapping": "shapedb:SliceHeroChips.CaK944VzD",
+            "type": "string",
+            "title": "Third Chip Statement"
+          },
+          "ThirdChipLink": {
+            "@mapping": "shapedb:SliceHeroChips.mzeCjlJNF",
+            "title": "Third Chip Link",
+            "@ref": "local:ComponentLink"
+          },
+          "ThirdChipImage": {
+            "@mapping": "shapedb:SliceHeroChips.EVDCo3KX_",
+            "title": "Third Chip Image",
+            "@ref": "local:ComponentImage"
+          }
+        }
+      }
+    },
+    "ComponentLink": {
+      "id": "Cfq66hJ8y",
+      "name": "ComponentLink",
+      "title": "Component Link",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "@mapping": "shapedb:ComponentLink.CgIEE_egx",
+            "type": "string",
+            "title": "Title"
+          },
+          "URL": {
+            "@mapping": "shapedb:ComponentLink.GsIYWBvMn",
+            "type": "string",
+            "title": "URL"
+          },
+          "OpenNewPage": {
+            "@mapping": "shapedb:ComponentLink.FRuMEk1qn",
+            "type": "boolean",
+            "title": "Open New Page"
+          }
+        }
+      }
+    },
+    "ComponentImage": {
+      "id": "o-40ONASe",
+      "name": "ComponentImage",
+      "title": "Component Image",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "AltText": {
+            "@mapping": "shapedb:ComponentImage.5gj_znicB",
+            "type": "string",
+            "title": "Alt Text"
+          },
+          "Image": {
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@mapping": "shapedb:ComponentImage.6lwfiwbyU",
+            "title": "Image",
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            }
+          },
+          "MobileImage": {
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@mapping": "shapedb:ComponentImage.BAvOK1EXY",
+            "title": "Mobile Image",
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            }
+          },
+          "HorizontalAlignment": {
+            "@mapping": "shapedb:ComponentImage.-FzeiUK4v",
+            "type": "string",
+            "title": "Horizontal Alignment",
+            "oneOf": [
+              {
+                "title": "Center",
+                "enum": [
+                  "center"
+                ]
+              },
+              {
+                "title": "Left",
+                "enum": [
+                  "left"
+                ]
+              },
+              {
+                "title": "Right",
+                "enum": [
+                  "right"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ComponentCard": {
+      "id": "H87xPSN-q",
+      "name": "ComponentCard",
+      "title": "Component Card",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "PreHeadline": {
+            "@mapping": "shapedb:ComponentCard.O1Q-IemOu",
+            "type": "string",
+            "title": "Pre Headline"
+          },
+          "Headline": {
+            "@mapping": "shapedb:ComponentCard.ZcTJ9zNzi",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:ComponentCard.AHBJa15Hx",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Image": {
+            "@mapping": "shapedb:ComponentCard.QcVhdYo5N",
+            "title": "Image",
+            "@ref": "local:ComponentImage"
+          },
+          "Link": {
+            "@mapping": "shapedb:ComponentCard.mOe6V5uSR",
+            "title": "Link",
+            "@ref": "local:ComponentLink"
+          }
+        }
+      }
+    },
+    "SliceCards": {
+      "id": "j67XVeQjb",
+      "name": "SliceCards",
+      "title": "Slice Cards",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "PreHeadline": {
+            "@mapping": "shapedb:SliceCards._sJntdpjo",
+            "type": "string",
+            "title": "Pre Headline"
+          },
+          "Headline": {
+            "@mapping": "shapedb:SliceCards.CeStkM_iN",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceCards.agjyBwXUI",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Cards": {
+            "@mapping": "shapedb:SliceCards.6gOhQXxs4",
+            "type": "array",
+            "title": "Cards",
+            "items": {
+              "@ref": "local:ComponentCard"
+            }
+          }
+        }
+      }
+    },
+    "SliceVerticalScroller": {
+      "id": "TqKaviXsA",
+      "name": "SliceVerticalScroller",
+      "title": "Slice Vertical Scroller",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceVerticalScroller.h7u1vsJWv",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceVerticalScroller.XN2qYeSKR",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Slides": {
+            "title": "Slides",
+            "@mapping": "shapedb:SliceVerticalScroller.OVO3tuvoM",
+            "type": "array",
+            "items": {
+              "@ref": "local:ComponentCard"
+            }
+          }
+        }
+      }
+    },
+    "SliceVideoGallery": {
+      "id": "T6AIdk7wq",
+      "name": "SliceVideoGallery",
+      "title": "Slice Video Gallery",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceVideoGallery.baGDzswvS",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceVideoGallery.-vT5PbpJR",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Videos": {
+            "@mapping": "shapedb:SliceVideoGallery.w82LJvmot",
+            "type": "array",
+            "title": "Videos",
+            "items": {
+              "@ref": "local:ComponentVideoCard"
+            }
+          }
+        }
+      }
+    },
+    "ComponentVideoCard": {
+      "id": "_e3tIdrEN",
+      "name": "ComponentVideoCard",
+      "title": "Component Video Card",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:ComponentVideoCard.CIQGoaVQ6",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:ComponentVideoCard.lsCeey6I-",
+            "type": "string",
+            "title": "Statement"
+          },
+          "VideoCoverImage": {
+            "title": "Video Cover Image",
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@mapping": "shapedb:ComponentVideoCard.ll3HmGxQM"
+          },
+          "Video": {
+            "title": "Video",
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@mapping": "shapedb:ComponentVideoCard.jPBK8qohU"
+          }
+        }
+      }
+    },
+    "SliceSBSIcons": {
+      "id": "rV6pSD7tl",
+      "name": "SliceSBSIcons",
+      "title": "Slice SBS Icons",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceSBSIcons.7vu-0JIkO",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceSBSIcons.RfWClsMbU",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Icons": {
+            "title": "Icons",
+            "@mapping": "shapedb:SliceSBSIcons.3XFYQj4UL",
+            "type": "array",
+            "items": {
+              "@ref": "local:ComponentCard"
+            }
+          }
+        }
+      }
+    },
+    "SliceSBS": {
+      "id": "uEy8BdwB9",
+      "name": "SliceSBS",
+      "title": "Slice SBS",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "PreHeadline": {
+            "@mapping": "shapedb:SliceSBS.bDXePSnw1",
+            "type": "string",
+            "title": "Pre Headline"
+          },
+          "Headline": {
+            "@mapping": "shapedb:SliceSBS.e6FbwOTSg",
+            "type": "string",
+            "title": "Headline"
+          },
+          "DisclaimerStatement": {
+            "@mapping": "shapedb:SliceSBS.1wEgegblJ",
+            "type": "string",
+            "title": "Disclaimer Statement"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceSBS.mnqKtpY6p",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Link": {
+            "@mapping": "shapedb:SliceSBS.RPB3y6TqS",
+            "title": "Link",
+            "@ref": "local:ComponentLink"
+          },
+          "FeaturedImage": {
+            "@mapping": "shapedb:SliceSBS.1JPDK2gxD",
+            "title": "Featured Image",
+            "@ref": "local:ComponentImage"
+          },
+          "EnableImageLeft": {
+            "@mapping": "shapedb:SliceSBS.rildOhMVf",
+            "type": "boolean",
+            "title": "Enable Image Left"
+          },
+          "EnableBackgroundImage": {
+            "@mapping": "shapedb:SliceSBS.fd5FJOb58",
+            "type": "boolean",
+            "title": "Enable Background Image"
+          }
+        }
+      }
+    },
+    "SliceBannerBackground": {
+      "id": "rard6RWCH",
+      "name": "SliceBannerBackground",
+      "title": "Slice Banner Background",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "BackgroundImage": {
+            "@mapping": "shapedb:SliceBannerBackground.YJRPAD17-",
+            "title": "Background Image",
+            "@ref": "local:ComponentImage"
+          }
+        },
+        "required": [
+          "BackgroundImage"
+        ]
+      }
+    },
+    "ComponentFAQ": {
+      "id": "9TvQtS2B4",
+      "name": "ComponentFAQ",
+      "title": "Component FAQ",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Question": {
+            "@mapping": "shapedb:ComponentFAQ.02xwwnSRw",
+            "type": "string",
+            "title": "Question"
+          },
+          "Answer": {
+            "@mapping": "shapedb:ComponentFAQ.TIzQbE59L",
+            "type": "string",
+            "title": "Answer",
+            "@tag": "mdx"
+          }
+        }
+      }
+    },
+    "SliceFAQ": {
+      "id": "xfiUlRyJ3",
+      "name": "SliceFAQ",
+      "title": "Slice FAQ",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceFAQ.6rg7s7vFh",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceFAQ.GWl6e3apa",
+            "type": "string",
+            "title": "Statement"
+          },
+          "FAQ": {
+            "title": "FAQ",
+            "@mapping": "shapedb:SliceFAQ.Y6Ewk55lf",
+            "type": "array",
+            "items": {
+              "@ref": "local:ComponentFAQ"
+            }
+          }
+        }
+      }
+    },
+    "ComponentReview": {
+      "id": "5EEeiCSjr",
+      "name": "ComponentReview",
+      "title": "Component Review",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Date": {
+            "@mapping": "shapedb:ComponentReview.ucFM1pRax",
+            "type": "string",
+            "title": "Date"
+          },
+          "Testimonial": {
+            "@mapping": "shapedb:ComponentReview.Kil4OveyV",
+            "type": "string",
+            "title": "Testimonial"
+          },
+          "Cite": {
+            "@mapping": "shapedb:ComponentReview.91bzpeBXr",
+            "type": "string",
+            "title": "Cite"
+          }
+        }
+      }
+    },
+    "SliceTestimonials": {
+      "id": "lV5SqkGte",
+      "name": "SliceTestimonials",
+      "title": "Slice Testimonials",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceTestimonials.L5LlLFqfT",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceTestimonials._i09KI4Pq",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Reviews": {
+            "title": "Reviews",
+            "@mapping": "shapedb:SliceTestimonials.yMdAeTvtj",
+            "type": "array",
+            "items": {
+              "@ref": "local:ComponentReview"
+            }
+          }
+        }
+      }
+    },
+    "SliceBannerVideo": {
+      "id": "HNE5EU2Qt",
+      "name": "SliceBannerVideo",
+      "title": "Slice Banner Video",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceBannerVideo.abkujdCTr",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceBannerVideo.uxodw31rZ",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Video": {
+            "@mapping": "shapedb:SliceBannerVideo.Fz4vTOAXU",
+            "title": "Video",
+            "@ref": "local:ComponentVideo"
+          }
+        }
+      }
+    },
+    "ComponentVideo": {
+      "id": "43WZDW-fn",
+      "name": "ComponentVideo",
+      "title": "Component Video",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "CoverImage": {
+            "title": "Cover Image",
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@mapping": "shapedb:ComponentVideo._AnN0Qsnl"
+          },
+          "Video": {
+            "title": "Video",
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@mapping": "shapedb:ComponentVideo.Z94tlue4l"
+          }
+        }
+      }
+    },
+    "ComponentFeature": {
+      "id": "6Ne0qtnHK",
+      "name": "ComponentFeature",
+      "title": "Component Feature",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:ComponentFeature.AC5GWYsIJ",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:ComponentFeature.m5h6-C0a3",
+            "type": "string",
+            "title": "Statement"
+          }
+        }
+      }
+    },
+    "SliceFeatures": {
+      "id": "33AZMKFUg",
+      "name": "SliceFeatures",
+      "title": "Slice Features",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Headline": {
+            "@mapping": "shapedb:SliceFeatures.JHNNLFtZG",
+            "type": "string",
+            "title": "Headline"
+          },
+          "Statement": {
+            "@mapping": "shapedb:SliceFeatures.6aGy4jnCb",
+            "type": "string",
+            "title": "Statement"
+          },
+          "Features": {
+            "title": "Features",
+            "@mapping": "shapedb:SliceFeatures.0Y4EMBC6n",
+            "type": "array",
+            "items": {
+              "@ref": "local:ComponentFeature"
+            }
+          }
+        }
+      }
+    }
+  },
+  "workflows": {},
+  "forms": {
+    "SliceContent": {
+      "default": {
+        "properties": {
+          "Content": {
+            "widget": "wysiwygTextMdx"
+          }
+        },
+        "order": [
+          "Content"
+        ]
+      }
+    },
+    "Slices": {
+      "default": {
+        "properties": {
+          "FriendlyName": {
+            "widget": "singleLineText"
+          },
+          "Settings": {
+            "widget": "shapeObject"
+          },
+          "Slice": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "FriendlyName",
+          "Settings",
+          "Slice"
+        ]
+      }
+    },
+    "SliceMarkdown": {
+      "default": {
+        "properties": {
+          "Code": {
+            "widget": "markdownText"
+          }
+        },
+        "order": [
+          "Code"
+        ]
+      }
+    },
+    "SliceBulkPurchase": {
+      "default": {
+        "properties": {
+          "Enable": {
+            "widget": "toggleSwitch"
+          }
+        },
+        "order": [
+          "Enable"
+        ]
+      }
+    },
+    "Pages": {
+      "default": {
+        "properties": {
+          "Title": {
+            "widget": "singleLineText"
+          },
+          "Handle": {
+            "widget": "slug"
+          },
+          "SEOSettings": {
+            "widget": "shapeObject"
+          },
+          "Slices": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Title",
+          "Handle",
+          "SEOSettings",
+          "Slices"
+        ]
+      }
+    },
+    "HomePage": {
+      "default": {
+        "properties": {
+          "SEO": {
+            "widget": "shapeObject"
+          },
+          "Slices": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "SEO",
+          "Slices"
+        ]
+      }
+    },
+    "SliceSettings": {
+      "default": {
+        "properties": {
+          "VerticalPadding": {
+            "widget": "dropdown"
+          },
+          "VerticalMargin": {
+            "widget": "dropdown"
+          },
+          "BgColor": {
+            "widget": "dropdown"
+          },
+          "TextColor": {
+            "widget": "dropdown"
+          }
+        },
+        "order": [
+          "VerticalPadding",
+          "VerticalMargin",
+          "BgColor",
+          "TextColor"
+        ]
+      }
+    },
+    "MetaSettings": {
+      "default": {
+        "properties": {
+          "Title": {
+            "widget": "singleLineText"
+          },
+          "Description": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "Title",
+          "Description"
+        ]
+      }
+    },
+    "SliceHeroChips": {
+      "default": {
+        "properties": {
+          "FeatureChipPreHeadline": {
+            "widget": "paragraphText"
+          },
+          "FeatureChipHeadline": {
+            "widget": "singleLineText"
+          },
+          "FeatureChipStatement": {
+            "widget": "singleLineText"
+          },
+          "FeatureChipLink": {
+            "widget": "shapeObject"
+          },
+          "FeatureChipImage": {
+            "widget": "shapeObject"
+          },
+          "SecondChipHeadline": {
+            "widget": "singleLineText"
+          },
+          "SecondChipStatement": {
+            "widget": "singleLineText"
+          },
+          "SecondChipLink": {
+            "widget": "shapeObject"
+          },
+          "SecondChipImage": {
+            "widget": "shapeObject"
+          },
+          "ThirdChipHeadline": {
+            "widget": "singleLineText"
+          },
+          "ThirdChipStatement": {
+            "widget": "singleLineText"
+          },
+          "ThirdChipLink": {
+            "widget": "shapeObject"
+          },
+          "ThirdChipImage": {
+            "widget": "shapeObject"
+          }
+        },
+        "order": [
+          "FeatureChipPreHeadline",
+          "FeatureChipHeadline",
+          "FeatureChipStatement",
+          "FeatureChipLink",
+          "FeatureChipImage",
+          "SecondChipHeadline",
+          "SecondChipStatement",
+          "SecondChipLink",
+          "SecondChipImage",
+          "ThirdChipHeadline",
+          "ThirdChipStatement",
+          "ThirdChipLink",
+          "ThirdChipImage"
+        ]
+      }
+    },
+    "ComponentLink": {
+      "default": {
+        "properties": {
+          "Title": {
+            "widget": "singleLineText"
+          },
+          "URL": {
+            "widget": "singleLineText"
+          },
+          "OpenNewPage": {
+            "widget": "toggleSwitch"
+          }
+        },
+        "order": [
+          "Title",
+          "URL",
+          "OpenNewPage"
+        ]
+      }
+    },
+    "ComponentImage": {
+      "default": {
+        "properties": {
+          "AltText": {
+            "widget": "singleLineText"
+          },
+          "Image": {
+            "widget": "image"
+          },
+          "MobileImage": {
+            "widget": "image"
+          },
+          "HorizontalAlignment": {
+            "widget": "dropdown"
+          }
+        },
+        "order": [
+          "AltText",
+          "Image",
+          "MobileImage",
+          "HorizontalAlignment"
+        ]
+      }
+    },
+    "ComponentCard": {
+      "default": {
+        "properties": {
+          "PreHeadline": {
+            "widget": "singleLineText"
+          },
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Image": {
+            "widget": "shapeObject"
+          },
+          "Link": {
+            "widget": "shapeObject"
+          }
+        },
+        "order": [
+          "PreHeadline",
+          "Headline",
+          "Statement",
+          "Image",
+          "Link"
+        ]
+      }
+    },
+    "SliceCards": {
+      "default": {
+        "properties": {
+          "PreHeadline": {
+            "widget": "singleLineText"
+          },
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Cards": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "PreHeadline",
+          "Headline",
+          "Statement",
+          "Cards"
+        ]
+      }
+    },
+    "SliceVerticalScroller": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Slides": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Slides"
+        ]
+      }
+    },
+    "SliceVideoGallery": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Videos": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Videos"
+        ]
+      }
+    },
+    "ComponentVideoCard": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "VideoCoverImage": {
+            "widget": "image"
+          },
+          "Video": {
+            "widget": "image"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "VideoCoverImage",
+          "Video"
+        ]
+      }
+    },
+    "SliceSBSIcons": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Icons": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Icons"
+        ]
+      }
+    },
+    "SliceSBS": {
+      "default": {
+        "properties": {
+          "PreHeadline": {
+            "widget": "singleLineText"
+          },
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "DisclaimerStatement": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Link": {
+            "widget": "shapeObject"
+          },
+          "FeaturedImage": {
+            "widget": "shapeObject"
+          },
+          "EnableImageLeft": {
+            "widget": "checkbox"
+          },
+          "EnableBackgroundImage": {
+            "widget": "checkbox"
+          }
+        },
+        "order": [
+          "PreHeadline",
+          "Headline",
+          "DisclaimerStatement",
+          "Statement",
+          "Link",
+          "FeaturedImage",
+          "EnableImageLeft",
+          "EnableBackgroundImage"
+        ]
+      }
+    },
+    "SliceBannerBackground": {
+      "default": {
+        "properties": {
+          "BackgroundImage": {
+            "widget": "shapeObject"
+          }
+        },
+        "order": [
+          "BackgroundImage"
+        ]
+      }
+    },
+    "ComponentFAQ": {
+      "default": {
+        "properties": {
+          "Question": {
+            "widget": "singleLineText"
+          },
+          "Answer": {
+            "widget": "wysiwygTextMdx"
+          }
+        },
+        "order": [
+          "Question",
+          "Answer"
+        ]
+      }
+    },
+    "SliceFAQ": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "FAQ": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "FAQ"
+        ]
+      }
+    },
+    "ComponentReview": {
+      "default": {
+        "properties": {
+          "Date": {
+            "widget": "singleLineText"
+          },
+          "Testimonial": {
+            "widget": "singleLineText"
+          },
+          "Cite": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "Date",
+          "Testimonial",
+          "Cite"
+        ]
+      }
+    },
+    "SliceTestimonials": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Reviews": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Reviews"
+        ]
+      }
+    },
+    "SliceBannerVideo": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Video": {
+            "widget": "shapeObject"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Video"
+        ]
+      }
+    },
+    "ComponentVideo": {
+      "default": {
+        "properties": {
+          "CoverImage": {
+            "widget": "image"
+          },
+          "Video": {
+            "widget": "image"
+          }
+        },
+        "order": [
+          "CoverImage",
+          "Video"
+        ]
+      }
+    },
+    "ComponentFeature": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement"
+        ]
+      }
+    },
+    "SliceFeatures": {
+      "default": {
+        "properties": {
+          "Headline": {
+            "widget": "singleLineText"
+          },
+          "Statement": {
+            "widget": "singleLineText"
+          },
+          "Features": {
+            "widget": "shapeArray"
+          }
+        },
+        "order": [
+          "Headline",
+          "Statement",
+          "Features"
+        ]
+      }
+    }
+  },
+  "schemaVersion": "3.55.0",
+  "apiVersion": "2"
+}
